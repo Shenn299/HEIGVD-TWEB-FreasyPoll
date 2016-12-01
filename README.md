@@ -9,9 +9,13 @@ https://shenn299.github.io/HEIGVD-TWEB-FreasyPoll/
 ## Heroku web-app
 https://freasypoll.herokuapp.com/
 
-## Outils specification & version
+## Technology/frameworks used
+
+## Instructions to run locally the project
+Prerequisites (langage and version).
 
 ## Web-app navigation flow
+Mockups of the final user interface (with transitions between screens).
 
 ## Credits
 * FRANCHINI Fabien
