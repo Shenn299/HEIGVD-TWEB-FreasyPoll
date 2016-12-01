@@ -1,13 +1,13 @@
 ## Introduction
 
-## FreasyPoll
-It's a free easy poll maker
+## FreasyvePoll
+It's a free easy interactive poll maker
 
 ## Landing page
-https://shenn299.github.io/HEIGVD-TWEB-FreasyPoll/
+https://shenn299.github.io/HEIGVD-TWEB-FreasyvePoll/
 
 ## Heroku web-app
-https://freasypoll.herokuapp.com/
+https://freasyvepoll.herokuapp.com/
 
 ## Outils specification & version
 
