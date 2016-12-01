@@ -1,7 +1,7 @@
 ## Introduction
 
 ## FreasyPoll
-It's a free easy interactive poll maker
+It's a free easy anonymous interactive poll maker
 
 ## Landing page
 https://shenn299.github.io/HEIGVD-TWEB-FreasyPoll/
