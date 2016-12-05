@@ -1605,7 +1605,7 @@
 		color: #ffffff;
 		font-weight: 300;
 		line-height: 1em;
-		margin: 0 0 1em 0;
+		margin: 0 0 0em 0;
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -2127,17 +2127,17 @@
 	}
 
 	header.major {
-		margin: 0 0 4em 0;
+		margin: 0 0 0em 0;
 		position: relative;
 		text-align: center;
 	}
 
-		header.major:after {
+		header.major:before {
 			background: #e44c65;
 			content: '';
 			display: inline-block;
 			height: 0.2em;
-			max-width: 20em;
+			max-width: 50em;
 			width: 75%;
 		}
 
@@ -2459,7 +2459,6 @@
 			position: absolute;
 			left: 0;
 			top: 0;
-			background-image: url("images/overlay.png");
 			width: 100%;
 			height: 100%;
 			z-index: 1;
@@ -3371,7 +3370,6 @@
 			max-width: 95%;
 			padding: 6em;
 			position: relative;
-			text-align: right;
 			vertical-align: middle;
 			z-index: 1;
 		}
@@ -3503,7 +3501,7 @@
 		/* Wrapper */
 
 			.wrapper {
-				padding: 4.5em 0 2.5em 0;
+				padding: 2em 0 2.5em 0;
 			}
 
 		/* Dropotron */
