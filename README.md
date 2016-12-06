@@ -15,7 +15,7 @@ version 4.1.0.
 - [Gulp](http://gulpjs.com/) (`npm install --global gulp`)
 - [MongoDB](https://www.mongodb.org/) - Keep a running daemon with `mongod`
 
-### Developing
+### Install
 
 1. Clone this repository.
 
