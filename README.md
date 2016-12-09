@@ -53,7 +53,7 @@ The following pages are available for presenters in addition to the pages above 
   - Change password
   - Question creation
   - New poll room creation
-  - Charts page
+  - Charts
   - Logout (not a real page)
 
   From all these pages, presenter can go back to the home page and the welcome page (links not drawn).
