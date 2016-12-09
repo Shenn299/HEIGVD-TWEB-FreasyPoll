@@ -2,8 +2,7 @@
 
 `FreasyPoll` is a free and easy, interactive online poll.
 
-Go to this [page](https://shenn299.github.io/HEIGVD-TWEB-FreasyPoll/)
-in order to use the online application.
+The presentation page & the web app are available [here](https://shenn299.github.io/HEIGVD-TWEB-FreasyPoll/)
 
 ## Contribute
 
