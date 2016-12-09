@@ -32,8 +32,8 @@ open the client in your browser when ready.
 Run `gulp build` for building and `gulp serve` for preview.
 
 ## Documentation
-[Mookups of the user interface & transition between pages](resources/workflow.pdf)
 ![workflow-1](resources/workflow-1.png?raw=true "workflow-1")
+![workflow-2](resources/workflow-2.png?raw=true "workflow-2")
 
 ## Credits
 * FRANCHINI Fabien
