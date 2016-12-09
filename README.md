@@ -34,6 +34,9 @@ Run `gulp build` for building and `gulp serve` for preview.
 ## Documentation
 ![Alt text](/resources/navigation-flow.png?raw=true "Optional Title")
 
+![Alt text](/resources/workflow.png?raw=true "Optional Title")
+
+
 
 ## Credits
 * FRANCHINI Fabien
