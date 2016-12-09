@@ -2,7 +2,7 @@
 
 `FreasyPoll` is a free and easy, interactive online poll.
 
-A presenter can easily create a poll room, then he will add one or some quesions. Each question will always have three possibilities of response but only one is correct. The presenter can view the current response sent by the auditors.
+A presenter can easily create a poll room, then he will add one or some quesions. Each question will always have three possibilities of response but only one is correct. The presenter can view the current responses sent by the auditors.
 
 The presentation page & the web app are available [here](https://shenn299.github.io/HEIGVD-TWEB-FreasyPoll/)
 
