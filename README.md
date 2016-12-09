@@ -35,6 +35,29 @@ Run `gulp build` for building and `gulp serve` for preview.
 ![workflow-1](resources/workflow-1.png?raw=true "workflow-1")
 ![workflow-2](resources/workflow-2.png?raw=true "workflow-2")
 
+The access of the following pages don't need authentication (typically for auditors) :
+
+  - Welcome
+  - Answer
+  - Question answered
+  - About Freasypoll
+  - Sign up
+  - Log in
+
+The following pages are available for presenters in addition to the pages above (authentication required):
+
+  - Home
+  - Poll room administration
+  - Change password
+  - New question creation
+  - New poll room creation
+  - Charts page
+  - Logout (not a real page)
+
+  From all these pages, presenter can go back to the home page and the welcome page (links not drawn).
+
+From all pages, auditors and presenters can go to the project Github repository. 
+
 ## Credits
 * FRANCHINI Fabien
 * HENNEBERGER Sébastien
