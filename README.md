@@ -55,6 +55,10 @@ The following pages are available for presenters in addition to the pages above 
   - Question creation
   - New poll room creation
   - Charts
+  - Close question (not a real page)
+  - Delete question (not a real page)
+  - Close room (not a real page)
+  - Delete room (not a real page)
   - Logout (not a real page)
 
   From all these pages, presenter can go back to the home page and the welcome page (links not drawn).
