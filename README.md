@@ -32,10 +32,7 @@ open the client in your browser when ready.
 Run `gulp build` for building and `gulp serve` for preview.
 
 ## Documentation
-![Alt text](/resources/navigation-flow.png?raw=true "Optional Title")
-
-![Model View Controller](resources/workflow.pdf)
-
+[a relative link](resources/workflow.pdf)
 
 
 ## Credits
