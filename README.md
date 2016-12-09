@@ -1,6 +1,6 @@
 # FreasyPoll
 
-`FreasyPoll` is a free and easy, interactive online poll.
+`FreasyPoll` is a free and easy, interactive online poll. A presenter can easily create a poll room, then he will add one or some quesions. Each question will always have three possibilities of response but only one is correct.
 
 The presentation page & the web app are available [here](https://shenn299.github.io/HEIGVD-TWEB-FreasyPoll/)
 
