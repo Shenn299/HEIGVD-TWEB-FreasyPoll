@@ -33,8 +33,7 @@ open the client in your browser when ready.
 Run `gulp build` for building and `gulp serve` for preview.
 
 ## Mookups of user interface & transition between pages
-![workflow-1](resources/workflow-1.png?raw=true "workflow-1")
-![workflow-2](resources/workflow-2.png?raw=true "workflow-2")
+[Mookups of the user interface & transition between pages are available here](resources/workflow.pdf)
 
 From all pages, auditors and presenters can go to the Github repository of the project.
 
