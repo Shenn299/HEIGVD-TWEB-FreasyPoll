@@ -7,7 +7,7 @@ The presentation page & the web app are available [here](https://shenn299.github
 ## Contribute
 
 This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack)
-version 4.1.0.
+version 4.1.0 with Javascript (Babel) support.
 
 ### Prerequisites
 
