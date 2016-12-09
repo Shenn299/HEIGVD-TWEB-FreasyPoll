@@ -33,6 +33,7 @@ Run `gulp build` for building and `gulp serve` for preview.
 
 ## Documentation
 [Mookups of the user interface & transition between pages](resources/workflow.pdf)
+![workflow-1](resources/workflow-1.png?raw=true "workflow-1")
 
 ## Credits
 * FRANCHINI Fabien
