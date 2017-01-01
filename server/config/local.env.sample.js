@@ -6,11 +6,11 @@
 // You will need to set these on the server you deploy to.
 
 module.exports = {
-  DOMAIN: 'http://localhost:9000',
-  SESSION_SECRET: 'heigvdtwebfreasypoll-secret',
+  DOMAIN: 'http://localhost:3000',
+  SESSION_SECRET: 'secret',
 
-  TWITTER_ID: 'app-id',
-  TWITTER_SECRET: 'secret',
+  TWITTER_ID: 'twitterId',
+  TWITTER_SECRET: 'twitterSecret',
 
   // Control debug level for modules using visionmedia/debug
   DEBUG: ''

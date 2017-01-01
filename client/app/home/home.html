@@ -1,0 +1,21 @@
+<div>This is the home view.</div>
+
+<div class="col-md-12">
+    <h1>Poll rooms</h1>
+    <table class="table table-striped">
+        <thead>
+            <th>Name</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="pollRoom in homeCtrl.currentPresenterPollRooms">
+                <td>{{pollRoom.name}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <button class="btn btn-inverse" type="submit" ui-sref="create-poll-room">
+            Create poll room
+    </button>
+</div>
