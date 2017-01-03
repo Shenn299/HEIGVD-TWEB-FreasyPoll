@@ -36,7 +36,9 @@
 /* Component styles are injected through gulp */
 /* inject:css */
 @import 'admin/admin.css';
+@import 'administer-poll-room/administer-poll-room.css';
 @import 'create-poll-room/create-poll-room.css';
+@import 'create-question/create-question.css';
 @import 'home/home.css';
 @import 'main/main.css';
 @import '../components/footer/footer.css';

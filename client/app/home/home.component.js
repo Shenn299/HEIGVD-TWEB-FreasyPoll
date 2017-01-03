@@ -4,12 +4,14 @@ const angular = require('angular');
 const uiRouter = require('angular-ui-router');
 
 import routes from './home.routes';
+import currentPollRoomService from '../current-poll-room/current-poll-room.service';
 
 export class HomeComponent {
 
   /*@ngInject*/
-  constructor($http, Auth) {
+  constructor($http, Auth, currentPollRoom) {
     this.$http = $http;
+    this.currentPollRoom = currentPollRoom;
     this.pollRooms = [];
     this.currentPresenterPollRooms = [];
     this.getCurrentUser = Auth.getCurrentUserSync;
@@ -32,9 +34,14 @@ export class HomeComponent {
     }
   }
 
+  // Set the the poll room id to administer in the service
+  administer(pollRoom) {
+    this.currentPollRoom.setCurrentPollRoom(pollRoom);
+  }
+
 }
 
-export default angular.module('heigvdTwebFreasyPollApp.home', [uiRouter])
+export default angular.module('heigvdTwebFreasyPollApp.home', [uiRouter, currentPollRoomService])
   .config(routes)
   .component('home', {
     template: require('./home.html'),

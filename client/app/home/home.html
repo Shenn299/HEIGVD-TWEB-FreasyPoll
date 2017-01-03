@@ -9,6 +9,7 @@
         <tbody>
             <tr ng-repeat="pollRoom in homeCtrl.currentPresenterPollRooms">
                 <td>{{pollRoom.name}}</td>
+                <td><a ui-sref="administer-poll-room" ng-click='homeCtrl.administer(pollRoom)'>Administration</a></td>
             </tr>
         </tbody>
     </table>

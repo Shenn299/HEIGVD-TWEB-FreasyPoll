@@ -28,11 +28,13 @@ import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
 import CreatePollRoomComponent from './create-poll-room/create-poll-room.component';
 import HomeComponent from './home/home.component';
+import AdministerPollRoomComponent from './administer-poll-room/administer-poll-room.component';
+import CreateQuestionComponent from './create-question/create-question.component';
 
 import './app.css';
 
 angular.module('heigvdTwebFreasyPollApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io',
-  uiRouter, _Auth, account, admin, navbar, footer, main, constants, socket, util, CreatePollRoomComponent, HomeComponent
+  uiRouter, _Auth, account, admin, navbar, footer, main, constants, socket, util, CreatePollRoomComponent, HomeComponent, AdministerPollRoomComponent, CreateQuestionComponent
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {

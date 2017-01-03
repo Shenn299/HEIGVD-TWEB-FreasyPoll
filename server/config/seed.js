@@ -6,6 +6,8 @@
 'use strict';
 import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
+import PollRoom from '../api/poll-room/poll-room.model';
+import Question from '../api/question/question.model';
 
 Thing.find({}).remove()
   .then(() => {
@@ -57,3 +59,9 @@ User.find({}).remove()
       console.log('finished populating users');
     });
   });
+
+PollRoom.find({}).remove()
+ .then(() => {});
+
+ Question.find({}).remove()
+ .then(() => {});
