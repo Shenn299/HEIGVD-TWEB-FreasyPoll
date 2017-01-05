@@ -41,6 +41,7 @@
 @import 'create-question/create-question.css';
 @import 'home/home.css';
 @import 'main/main.css';
+@import 'poll-room/poll-room.css';
 @import '../components/footer/footer.css';
 @import '../components/oauth-buttons/oauth-buttons.css';
 /* endinject */

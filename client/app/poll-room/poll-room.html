@@ -1,0 +1,25 @@
+<div>This is the poll-room view.</div>
+
+<div>
+    <h1>Welcome in the {{ pollRoomCtrl.pollRoom.name }} poll room !</h1>
+
+    <div class="col-md-12">
+        <h1>Questions</h1>
+        <table class="table table-striped">
+            <thead>
+                <th>Statement</th>
+                <th>First possibility of response</th>
+                <th>Second possibility of response</th>
+                <th>Third possibility of response</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="question in pollRoomCtrl.pollRoomQuestions">
+                    <td>{{question.statement}}</td>
+                    <td>{{question.firstPossibilityOfResponse}}</td>
+                    <td>{{question.secondPossibilityOfResponse}}</td>
+                    <td>{{question.thirdPossibilityOfResponse}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

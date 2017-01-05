@@ -34,7 +34,7 @@ export class HomeComponent {
     }
   }
 
-  // Set the the poll room id to administer in the service
+  // Set the the poll room to administer in the service
   administer(pollRoom) {
     this.currentPollRoom.setCurrentPollRoom(pollRoom);
   }

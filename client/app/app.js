@@ -12,7 +12,6 @@ import uiRouter from 'angular-ui-router';
 // import ngMessages from 'angular-messages';
 // import ngValidationMatch from 'angular-validation-match';
 
-
 import {
   routeConfig
 } from './app.config';
@@ -30,11 +29,13 @@ import CreatePollRoomComponent from './create-poll-room/create-poll-room.compone
 import HomeComponent from './home/home.component';
 import AdministerPollRoomComponent from './administer-poll-room/administer-poll-room.component';
 import CreateQuestionComponent from './create-question/create-question.component';
+import PollRoomComponent from './poll-room/poll-room.component';
 
 import './app.css';
 
 angular.module('heigvdTwebFreasyPollApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io',
-  uiRouter, _Auth, account, admin, navbar, footer, main, constants, socket, util, CreatePollRoomComponent, HomeComponent, AdministerPollRoomComponent, CreateQuestionComponent
+  uiRouter, _Auth, account, admin, navbar, footer, main, constants, socket, util, CreatePollRoomComponent,
+  HomeComponent, AdministerPollRoomComponent, CreateQuestionComponent, PollRoomComponent
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {

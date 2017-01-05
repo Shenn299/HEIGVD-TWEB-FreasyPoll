@@ -14,7 +14,6 @@ export function currentPollRoomService() {
    this.getCurrentPollRoom = function() {
       return this.currentPollRoom;
    }
-
 }
 
 export default angular.module('heigvdTwebFreasyPollApp.current-poll-room', [])
