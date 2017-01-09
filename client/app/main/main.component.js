@@ -44,12 +44,14 @@ export class MainController {
 
   joinPollRoom() {
     if (this.pollRoomName) {
-      //this.pollRoomToJoin.setPollRoomToJoin(this.pollRoomName);
+      // Get all poll rooms
       this.$http.get('/api/poll-rooms').then(response => {
         this.pollRooms = response.data;
         for (var i = 0; i < this.pollRooms.length; ++i) {
           if (this.pollRooms[i].name == this.pollRoomName) {
+            // Get the right poll room
             this.pollRoomToJoin.setPollRoomToJoin(this.pollRooms[i]);
+            // Change the state of the router
             this.$state.go('poll-room');
             return;
           }

@@ -1,6 +1,6 @@
 'use strict';
-const angular = require('angular');
 
+const angular = require('angular');
 const uiRouter = require('angular-ui-router');
 
 import routes from './poll-room.routes';
@@ -8,16 +8,23 @@ import pollRoomToJoinService from '../poll-room-to-join/poll-room-to-join.servic
 
 export class PollRoomComponent {
 
+  questions = [];
+  pollRoomQuestions = [];
+  pollRoom = {};
+  response = '';
+
   /*@ngInject*/
-  constructor($http, pollRoomToJoin) {
+  constructor($http, socket, $scope, pollRoomToJoin) {
     this.$http = $http;
+    this.socket = socket;
     this.pollRoomToJoin = pollRoomToJoin;
-    this.questions = [];
-    this.pollRoomQuestions = [];
-    this.pollRoom = {};
     this.getPollRoomNameToJoin();
     this.getPollRoomIdToJoin();
+  }
+
+  $onInit() {
     this.getQuestions();
+    this.socket.syncUpdates('question', this.pollRoomQuestions);
   }
 
   getPollRoomNameToJoin() {
@@ -37,6 +44,7 @@ export class PollRoomComponent {
 
   getpollRoomQuestions() {
     var pollRoomId = this.pollRoom.id;
+    this.pollRoomQuestions.splice(0, this.pollRoomQuestions.length);
     for (var i = 0; i < this.questions.length; i++) {
       if (this.questions[i].pollRoomId == pollRoomId) {
         this.pollRoomQuestions.push(this.questions[i]);

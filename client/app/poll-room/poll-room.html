@@ -15,11 +15,14 @@
             <tbody>
                 <tr ng-repeat="question in pollRoomCtrl.pollRoomQuestions">
                     <td>{{question.statement}}</td>
-                    <td>{{question.firstPossibilityOfResponse}}</td>
-                    <td>{{question.secondPossibilityOfResponse}}</td>
-                    <td>{{question.thirdPossibilityOfResponse}}</td>
+                    <td><input type="radio" name="question.statement" ng-model="pollRoomCtrl.response" value="{{ question.firstPossibilityOfResponse }}"> {{ question.firstPossibilityOfResponse }}<br></td>
+                    <td><input type="radio" name="question.statement" ng-model="pollRoomCtrl.response" value="{{ question.secondPossibilityOfResponse }}"> {{ question.secondPossibilityOfResponse }}<br></td>
+                    <td><input type="radio" name="question.statement" ng-model="pollRoomCtrl.response" value="{{ question.thirdPossibilityOfResponse }}"> {{ question.thirdPossibilityOfResponse }}<br></td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+    <h2>{{ pollRoomCtrl.response }}</h2>
+
 </div>

@@ -9,13 +9,18 @@ import currentPollRoomService from '../current-poll-room/current-poll-room.servi
 export class AdministerPollRoomComponent {
 
   /*@ngInject*/
-  constructor($http, currentPollRoom) {
+  constructor($http, socket, $scope, currentPollRoom) {
     this.$http = $http;
+    this.socket = socket;
     this.currentPollRoom = currentPollRoom;
     this.questions = [];
     this.currentPollRoomQuestions = [];
     this.getCurrentPollRoom();
     this.getQuestions();
+
+    $scope.$on('$destroy', function () {
+      socket.unsyncUpdates('question');
+    });
   }
 
   getCurrentPollRoom() {
@@ -39,7 +44,7 @@ export class AdministerPollRoomComponent {
   }
 
   delete(question) {
-    this.$http.delete('/api/questions/' + question._id).then(response => {});
+    this.$http.delete('/api/questions/' + question._id).then(response => { });
     // Remove the question from the model too
     this.currentPollRoomQuestions.splice(this.currentPollRoomQuestions.indexOf(question), 1);
   }
