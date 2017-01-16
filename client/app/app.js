@@ -30,21 +30,23 @@ import HomeComponent from './home/home.component';
 import AdministerPollRoomComponent from './administer-poll-room/administer-poll-room.component';
 import CreateQuestionComponent from './create-question/create-question.component';
 import PollRoomComponent from './poll-room/poll-room.component';
+import ResultsChartsComponent from './results-charts/results-charts.component';
+import chartJs from 'angular-chart.js';
 
 import './app.css';
 
 angular.module('heigvdTwebFreasyPollApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io',
   uiRouter, _Auth, account, admin, navbar, footer, main, constants, socket, util, CreatePollRoomComponent,
-  HomeComponent, AdministerPollRoomComponent, CreateQuestionComponent, PollRoomComponent
+  HomeComponent, AdministerPollRoomComponent, CreateQuestionComponent, PollRoomComponent, ResultsChartsComponent, chartJs
 ])
   .config(routeConfig)
-  .run(function($rootScope, $location, Auth) {
+  .run(function ($rootScope, $location, Auth) {
     'ngInject';
-    // Redirect to login if route requires auth and you're not logged in
 
-    $rootScope.$on('$stateChangeStart', function(event, next) {
-      Auth.isLoggedIn(function(loggedIn) {
-        if(next.authenticate && !loggedIn) {
+    // Redirect to login if route requires auth and you're not logged in
+    $rootScope.$on('$stateChangeStart', function (event, next) {
+      Auth.isLoggedIn(function (loggedIn) {
+        if (next.authenticate && !loggedIn) {
           $location.path('/login');
         }
       });

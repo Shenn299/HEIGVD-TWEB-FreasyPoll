@@ -9,9 +9,9 @@ import currentPollRoomService from '../current-poll-room/current-poll-room.servi
 export class HomeComponent {
 
   /*@ngInject*/
-  constructor($http, Auth, currentPollRoom) {
+  constructor($http, Auth, pollRoomToJoin) {
     this.$http = $http;
-    this.currentPollRoom = currentPollRoom;
+    this.pollRoomToJoin = pollRoomToJoin;
     this.pollRooms = [];
     this.currentPresenterPollRooms = [];
     this.getCurrentUser = Auth.getCurrentUserSync;
@@ -36,7 +36,7 @@ export class HomeComponent {
 
   // Set the the poll room to administer in the service
   administer(pollRoom) {
-    this.currentPollRoom.setCurrentPollRoom(pollRoom);
+    this.pollRoomToJoin.setPollRoomToJoin(pollRoom);
   }
 
 }

@@ -1,0 +1,31 @@
+<div>This is the results-charts view.</div>
+
+<div>
+    <h1>Results / Charts for your {{ resultsChartsCtrl.pollRoom.name }} poll room !</h1>
+</div>
+
+<div class="col-md-12">
+    <h1>Questions</h1>
+
+    <div ng-repeat="question in resultsChartsCtrl.pollRoomQuestions">
+        <div layout="row" layout-align="center center" style="min-height: 200px">
+            <div>
+                {{question.statement}} <br> 
+                A:{{ question.firstPossibilityOfResponse }} <br>
+                B:{{ question.secondPossibilityOfResponse }} <br>
+                C:{{ question.thirdPossibilityOfResponse }} <br>
+                Already {{ (question.numberOfResponsesForFirstPossibilityOfResponse * 1) + (question.numberOfResponsesForSecondPossibilityOfResponse * 1) + (question.numberOfResponsesForThirdPossibilityOfResponse * 1) }} answers
+
+            </div>
+
+            <div>
+                <canvas id="doughnut" height="40" class="chart chart-doughnut" chart-data="[question.numberOfResponsesForFirstPossibilityOfResponse, question.numberOfResponsesForSecondPossibilityOfResponse, question.numberOfResponsesForThirdPossibilityOfResponse]"
+                    chart-labels="resultsChartsCtrl.labels" chart-colors="resultsChartsCtrl.colors"
+                </canvas>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

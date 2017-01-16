@@ -7,6 +7,12 @@ var QuestionSchema = new mongoose.Schema({
   firstPossibilityOfResponse: String,
   secondPossibilityOfResponse: String,
   thirdPossibilityOfResponse: String,
+  numberOfResponsesForFirstPossibilityOfResponse: Number,
+  // numberOfResponsesForFirstPossibilityOfResponse: { type: Number, default: '0' },
+  numberOfResponsesForSecondPossibilityOfResponse: Number,
+  // numberOfResponsesForSecondPossibilityOfResponse: { type: Number, default: '0' },
+  numberOfResponsesForThirdPossibilityOfResponse: Number,
+  // numberOfResponsesForThirdPossibilityOfResponse: { type: Number, default: '0' },
   pollRoomId: String
 });
 

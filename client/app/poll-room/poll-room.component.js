@@ -8,10 +8,14 @@ import pollRoomToJoinService from '../poll-room-to-join/poll-room-to-join.servic
 
 export class PollRoomComponent {
 
+  // All questions from all poll-rooms
   questions = [];
+  // All questions from the current poll-room 
   pollRoomQuestions = [];
+  // The current poll-room
   pollRoom = {};
-  response = '';
+  // The total number of responses for the question
+  numberOfResponses = 0;
 
   /*@ngInject*/
   constructor($http, socket, $scope, pollRoomToJoin) {
@@ -38,11 +42,11 @@ export class PollRoomComponent {
   getQuestions() {
     this.$http.get('/api/questions').then(response => {
       this.questions = response.data;
-      this.getpollRoomQuestions();
+      this.getPollRoomQuestions();
     });
   }
 
-  getpollRoomQuestions() {
+  getPollRoomQuestions() {
     var pollRoomId = this.pollRoom.id;
     this.pollRoomQuestions.splice(0, this.pollRoomQuestions.length);
     for (var i = 0; i < this.questions.length; i++) {
@@ -50,6 +54,74 @@ export class PollRoomComponent {
         this.pollRoomQuestions.push(this.questions[i]);
       }
     }
+  }
+
+  update(question) {
+    // Check if question.answered is defined
+    if (question.answered) {
+      // Update the number of responses for this question for this response
+      if (question.answered == 1) {
+        this.$http.patch('/api/questions/' + question._id,
+          [
+	          {
+	            "op": "replace",
+	            "path": "/numberOfResponsesForFirstPossibilityOfResponse",
+	            "value": question.numberOfResponsesForFirstPossibilityOfResponse + 1
+	          }
+          ]
+        )
+          .then(response => {
+            return this.getNumberOfResponses(question._id)
+              .then(response => { });
+          });
+      }
+
+      else if (question.answered == 2) {
+        this.$http.patch('/api/questions/' + question._id,
+          [
+	          {
+	            "op": "replace",
+	            "path": "/numberOfResponsesForSecondPossibilityOfResponse",
+	            "value": question.numberOfResponsesForSecondPossibilityOfResponse + 1
+	          }
+          ]
+        )
+          .then(response => {
+            return this.getNumberOfResponses(question._id)
+              .then(response => { });
+          });
+      }
+
+      else {
+        this.$http.patch('/api/questions/' + question._id,
+          [
+	          {
+	            "op": "replace",
+	            "path": "/numberOfResponsesForThirdPossibilityOfResponse",
+	            "value": question.numberOfResponsesForThirdPossibilityOfResponse + 1
+	          }
+          ]
+        )
+          .then(response => {
+            return this.getNumberOfResponses(question._id)
+              .then(response => {});
+          });
+      }
+
+    }
+
+  }
+
+  // Return the total number of responses for the question
+  getNumberOfResponses(questionId) {
+    return this.$http.get('/api/questions/' + questionId)
+      .then(response => {
+        var question = response.data;
+        this.numberOfResponses = question.numberOfResponsesForFirstPossibilityOfResponse
+          + question.numberOfResponsesForSecondPossibilityOfResponse
+          + question.numberOfResponsesForThirdPossibilityOfResponse;
+      });
+
   }
 
 }

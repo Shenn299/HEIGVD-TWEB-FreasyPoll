@@ -13,7 +13,7 @@
             <th>Third possibility of response</th>
         </thead>
         <tbody>
-            <tr ng-repeat="question in administerPollRoomCtrl.currentPollRoomQuestions">
+            <tr ng-repeat="question in administerPollRoomCtrl.pollRoomQuestions">
                 <td>{{question.statement}}</td>
                 <td>{{question.firstPossibilityOfResponse}}</td>
                 <td>{{question.secondPossibilityOfResponse}}</td>
@@ -27,5 +27,9 @@
 <div>
     <button class="btn btn-inverse" type="submit" ui-sref="create-question">
             Create question
+    </button>
+
+    <button class="btn btn-inverse" type="submit" ui-sref="results-charts">
+            Results / Charts
     </button>
 </div>

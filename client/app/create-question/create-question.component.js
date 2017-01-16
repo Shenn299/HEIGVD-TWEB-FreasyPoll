@@ -15,15 +15,17 @@ export class CreateQuestionComponent {
     thirdPossibilityOfResponse: '',
   };
 
+  pollRoom = {};
+
   /*@ngInject*/
-  constructor($http, currentPollRoom) {
+  constructor($http, pollRoomToJoin) {
     this.$http = $http;
-    this.currentPollRoom = currentPollRoom;
-    this.getCurrentPollRoom();
+    this.pollRoomToJoin = pollRoomToJoin;
+    this.getPollRoomId();
   }
 
-  getCurrentPollRoom() {
-    this.pollRoom = this.currentPollRoom.getCurrentPollRoom();
+  getPollRoomId() {
+    this.pollRoom.id = this.pollRoomToJoin.getPollRoomIdToJoin();
   }
 
   createQuestion() {
@@ -33,7 +35,10 @@ export class CreateQuestionComponent {
         firstPossibilityOfResponse: this.question.firstPossibilityOfResponse,
         secondPossibilityOfResponse: this.question.secondPossibilityOfResponse,
         thirdPossibilityOfResponse: this.question.thirdPossibilityOfResponse,
-        pollRoomId: this.pollRoom._id
+        pollRoomId: this.pollRoom.id,
+        numberOfResponsesForFirstPossibilityOfResponse: '0',
+        numberOfResponsesForSecondPossibilityOfResponse: '0',
+        numberOfResponsesForThirdPossibilityOfResponse: '0'
       });
       this.question.statement = '';
       this.question.firstPossibilityOfResponse = '';

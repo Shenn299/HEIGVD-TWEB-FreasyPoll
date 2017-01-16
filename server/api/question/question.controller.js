@@ -24,6 +24,8 @@ function respondWithResult(res, statusCode) {
 }
 
 function patchUpdates(patches) {
+  console.log("I am patchUpdates() !!!!!");
+  console.log("patches:" + patches);
   return function(entity) {
     try {
       jsonpatch.apply(entity, patches, /*validate*/ true);
@@ -98,6 +100,8 @@ export function upsert(req, res) {
 
 // Updates an existing Question in the DB
 export function patch(req, res) {
+  console.log("I am patch() !!!!!!!!!");
+  console.log("req : " + req);
   if(req.body._id) {
     delete req.body._id;
   }
