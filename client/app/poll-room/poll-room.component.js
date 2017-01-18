@@ -5,6 +5,7 @@ const uiRouter = require('angular-ui-router');
 
 import routes from './poll-room.routes';
 import pollRoomToJoinService from '../poll-room-to-join/poll-room-to-join.service';
+import questionsAnsweredService from '../questions-answered/questions-answered.service';
 
 export class PollRoomComponent {
 
@@ -14,14 +15,13 @@ export class PollRoomComponent {
   pollRoomQuestions = [];
   // The current poll-room
   pollRoom = {};
-  // The total number of responses for the question
-  numberOfResponses = 0;
 
   /*@ngInject*/
-  constructor($http, socket, $scope, pollRoomToJoin) {
+  constructor($http, socket, $scope, pollRoomToJoin, questionsAnswered) {
     this.$http = $http;
     this.socket = socket;
     this.pollRoomToJoin = pollRoomToJoin;
+    this.questionsAnswered = questionsAnswered;
     this.getPollRoomNameToJoin();
     this.getPollRoomIdToJoin();
   }
@@ -51,82 +51,73 @@ export class PollRoomComponent {
     this.pollRoomQuestions.splice(0, this.pollRoomQuestions.length);
     for (var i = 0; i < this.questions.length; i++) {
       if (this.questions[i].pollRoomId == pollRoomId) {
+        if (this.questionsAnswered.hasBeenAnswered(this.questions[i]._id) == true) {
+          this.questions[i].isAnswered = true;
+        }
+        else {
+          this.questions[i].isAnswered = false;
+        }
         this.pollRoomQuestions.push(this.questions[i]);
       }
     }
   }
 
-  update(question) {
-    // Check if question.answered is defined
-    if (question.answered) {
-      // Update the number of responses for this question for this response
-      if (question.answered == 1) {
-        this.$http.patch('/api/questions/' + question._id,
-          [
-	          {
-	            "op": "replace",
-	            "path": "/numberOfResponsesForFirstPossibilityOfResponse",
-	            "value": question.numberOfResponsesForFirstPossibilityOfResponse + 1
-	          }
-          ]
-        )
-          .then(response => {
-            return this.getNumberOfResponses(question._id)
-              .then(response => { });
-          });
-      }
-
-      else if (question.answered == 2) {
-        this.$http.patch('/api/questions/' + question._id,
-          [
-	          {
-	            "op": "replace",
-	            "path": "/numberOfResponsesForSecondPossibilityOfResponse",
-	            "value": question.numberOfResponsesForSecondPossibilityOfResponse + 1
-	          }
-          ]
-        )
-          .then(response => {
-            return this.getNumberOfResponses(question._id)
-              .then(response => { });
-          });
-      }
-
-      else {
-        this.$http.patch('/api/questions/' + question._id,
-          [
-	          {
-	            "op": "replace",
-	            "path": "/numberOfResponsesForThirdPossibilityOfResponse",
-	            "value": question.numberOfResponsesForThirdPossibilityOfResponse + 1
-	          }
-          ]
-        )
-          .then(response => {
-            return this.getNumberOfResponses(question._id)
-              .then(response => {});
-          });
-      }
-
+  update(question, response) {
+    var self = this;
+    // Update the number of responses for this question for this response
+    if (response == 1) {
+      this.$http.patch('/api/questions/' + question._id,
+        [
+          {
+            "op": "replace",
+            "path": "/numberOfResponsesForFirstPossibilityOfResponse",
+            "value": question.numberOfResponsesForFirstPossibilityOfResponse + 1
+          }
+        ]
+      )
+        .success(function () {
+          self.questionsAnswered.addQuestionAnswered(question._id);
+          self.getQuestions();
+        });
     }
 
-  }
+    else if (response == 2) {
+      this.$http.patch('/api/questions/' + question._id,
+        [
+          {
+            "op": "replace",
+            "path": "/numberOfResponsesForSecondPossibilityOfResponse",
+            "value": question.numberOfResponsesForSecondPossibilityOfResponse + 1
+          }
+        ]
+      )
+        .success(function () {
+          self.questionsAnswered.addQuestionAnswered(question._id);
+          self.getQuestions();
+        });
+    }
 
-  // Return the total number of responses for the question
-  getNumberOfResponses(questionId) {
-    return this.$http.get('/api/questions/' + questionId)
-      .then(response => {
-        var question = response.data;
-        this.numberOfResponses = question.numberOfResponsesForFirstPossibilityOfResponse
-          + question.numberOfResponsesForSecondPossibilityOfResponse
-          + question.numberOfResponsesForThirdPossibilityOfResponse;
-      });
+    else {
+      this.$http.patch('/api/questions/' + question._id,
+        [
+          {
+            "op": "replace",
+            "path": "/numberOfResponsesForThirdPossibilityOfResponse",
+            "value": question.numberOfResponsesForThirdPossibilityOfResponse + 1
+          }
+        ]
+      )
+        .success(function () {
+          self.questionsAnswered.addQuestionAnswered(question._id);
+          self.getQuestions();
+        });
+    }
 
   }
 
 }
 
-export default angular.module('heigvdTwebFreasyPollApp.poll-room', [uiRouter, pollRoomToJoinService])
+export default angular.module('heigvdTwebFreasyPollApp.poll-room', [uiRouter, pollRoomToJoinService, questionsAnsweredService])
   .config(routes)
   .component('pollRoom', {
     template: require('./poll-room.html'),

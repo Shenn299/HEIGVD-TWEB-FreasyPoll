@@ -8,16 +8,24 @@
 
         <div ng-repeat="question in pollRoomCtrl.pollRoomQuestions">
             {{question.statement}}<br>
-            <input type="radio" ng-model="question.answered" ng-value="1"> {{ question.firstPossibilityOfResponse }}<br>
-            <input type="radio" ng-model="question.answered" ng-value="2"> {{ question.secondPossibilityOfResponse }}<br>
-            <input type="radio" ng-model="question.answered" ng-value="3"> {{ question.thirdPossibilityOfResponse }}<br>
+            <button ng-disabled="question.isAnswered" class="btn btn-inverse" type="submit" ng-click="pollRoomCtrl.update(question, 1)">
+                A
+            </button> {{ question.firstPossibilityOfResponse }}<br>
 
-            <button class="btn btn-inverse" type="submit" ng-click="pollRoomCtrl.update(question)">
-                Answer
-            </button>
+            <button ng-disabled="question.isAnswered" class="btn btn-inverse" type="submit" ng-click="pollRoomCtrl.update(question, 2)">
+                B
+            </button> {{ question.secondPossibilityOfResponse }}<br>
 
-            Already {{ (question.numberOfResponsesForFirstPossibilityOfResponse * 1) + (question.numberOfResponsesForSecondPossibilityOfResponse * 1) + (question.numberOfResponsesForThirdPossibilityOfResponse * 1) }} answers
+            <button ng-disabled="question.isAnswered" class="btn btn-inverse" type="submit" ng-click="pollRoomCtrl.update(question, 3)">
+                C
+            </button> {{ question.thirdPossibilityOfResponse }}<br>
+            
+            Already {{ (question.numberOfResponsesForFirstPossibilityOfResponse
+            * 1) + (question.numberOfResponsesForSecondPossibilityOfResponse * 1) + (question.numberOfResponsesForThirdPossibilityOfResponse
+            * 1) }} answers
+
             <p></p>
+
         </div>
 
     </div>
