@@ -4,7 +4,6 @@ const angular = require('angular');
 const uiRouter = require('angular-ui-router');
 
 import routes from './results-charts.routes';
-import currentPollRoomService from '../current-poll-room/current-poll-room.service';
 
 export class ResultsChartsComponent {
 
@@ -59,7 +58,7 @@ export class ResultsChartsComponent {
 
 }
 
-export default angular.module('heigvdTwebFreasyPollApp.results-charts', [uiRouter, currentPollRoomService])
+export default angular.module('heigvdTwebFreasyPollApp.results-charts', [uiRouter])
   .config(routes)
   .component('resultsCharts', {
     template: require('./results-charts.html'),

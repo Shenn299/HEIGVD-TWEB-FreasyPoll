@@ -1,10 +1,9 @@
 'use strict';
-const angular = require('angular');
 
+const angular = require('angular');
 const uiRouter = require('angular-ui-router');
 
 import routes from './create-question.routes';
-import currentPollRoomService from '../current-poll-room/current-poll-room.service';
 
 export class CreateQuestionComponent {
 
@@ -18,8 +17,9 @@ export class CreateQuestionComponent {
   pollRoom = {};
 
   /*@ngInject*/
-  constructor($http, pollRoomToJoin) {
+  constructor($http, $state, pollRoomToJoin) {
     this.$http = $http;
+    this.$state = $state;
     this.pollRoomToJoin = pollRoomToJoin;
     this.getPollRoomId();
   }
@@ -29,7 +29,8 @@ export class CreateQuestionComponent {
   }
 
   createQuestion() {
-    if (this.question.statement) {
+    if (this.question.statement && this.question.firstPossibilityOfResponse && this.question.secondPossibilityOfResponse && this.question.thirdPossibilityOfResponse) {
+      var self = this;
       this.$http.post('/api/questions', {
         statement: this.question.statement,
         firstPossibilityOfResponse: this.question.firstPossibilityOfResponse,
@@ -39,7 +40,11 @@ export class CreateQuestionComponent {
         numberOfResponsesForFirstPossibilityOfResponse: '0',
         numberOfResponsesForSecondPossibilityOfResponse: '0',
         numberOfResponsesForThirdPossibilityOfResponse: '0'
-      });
+      })
+        .then(function (response) {
+          self.$state.go('administer-poll-room');
+        });
+
       this.question.statement = '';
       this.question.firstPossibilityOfResponse = '';
       this.question.secondPossibilityOfResponse = '';
@@ -48,7 +53,7 @@ export class CreateQuestionComponent {
   }
 }
 
-export default angular.module('heigvdTwebFreasyPollApp.create-question', [uiRouter, currentPollRoomService])
+export default angular.module('heigvdTwebFreasyPollApp.create-question', [uiRouter])
   .config(routes)
   .component('createQuestion', {
     template: require('./create-question.html'),

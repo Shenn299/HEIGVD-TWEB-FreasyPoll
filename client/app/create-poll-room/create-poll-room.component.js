@@ -13,18 +13,25 @@ export class CreatePollRoomComponent {
   };
 
   /*@ngInject*/
-  constructor($http, Auth) {
+  constructor($http, $state, Auth) {
     this.$http = $http;
+    this.$state = $state;
     this.getCurrentUser = Auth.getCurrentUserSync;
   }
 
   createPollRoom() {
-    if(this.pollRoom.name) {
+    if (this.pollRoom.name) {
+      var self = this;
       this.$http.post('/api/poll-rooms', {
         name: this.pollRoom.name,
         password: this.pollRoom.password,
         presenterId: this.getCurrentUser()._id
-      });
+      })
+        .then(function (response) {
+          // Change the state of the router
+          self.$state.go('presenter-home');
+        });
+
       this.pollRoom.name = '';
       this.pollRoom.password = '';
     }

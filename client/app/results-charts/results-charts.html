@@ -1,7 +1,5 @@
-<div>This is the results-charts view.</div>
-
 <div>
-    <h1>Results / Charts for your {{ resultsChartsCtrl.pollRoom.name }} poll room !</h1>
+    <h1>Results / Charts for the {{ resultsChartsCtrl.pollRoom.name }} poll room !</h1>
 </div>
 
 <div class="col-md-12">
@@ -10,16 +8,16 @@
     <div ng-repeat="question in resultsChartsCtrl.pollRoomQuestions">
         <div layout="row" layout-align="center center" style="min-height: 200px">
             <div>
-                {{question.statement}} <br> 
-                A:{{ question.firstPossibilityOfResponse }} <br>
-                B:{{ question.secondPossibilityOfResponse }} <br>
-                C:{{ question.thirdPossibilityOfResponse }} <br>
-                Already {{ (question.numberOfResponsesForFirstPossibilityOfResponse * 1) + (question.numberOfResponsesForSecondPossibilityOfResponse * 1) + (question.numberOfResponsesForThirdPossibilityOfResponse * 1) }} answers
+                <h2>{{question.statement}} </h3> 
+                <h2><font color="red">A</font>:{{ question.firstPossibilityOfResponse }} <br></h2>
+                <h2><font color="green">B</font>:{{ question.secondPossibilityOfResponse }} <br></h2>
+                <h2><font color="blue">C</font>:{{ question.thirdPossibilityOfResponse }} <br></h2>
+                <h2>Already {{ (question.numberOfResponsesForFirstPossibilityOfResponse * 1) + (question.numberOfResponsesForSecondPossibilityOfResponse * 1) + (question.numberOfResponsesForThirdPossibilityOfResponse * 1) }} answers</h2>
 
             </div>
 
             <div>
-                <canvas id="doughnut" height="40" class="chart chart-doughnut" chart-data="[question.numberOfResponsesForFirstPossibilityOfResponse, question.numberOfResponsesForSecondPossibilityOfResponse, question.numberOfResponsesForThirdPossibilityOfResponse]"
+                <canvas id="doughnut" height="60" class="chart chart-doughnut" chart-data="[question.numberOfResponsesForFirstPossibilityOfResponse, question.numberOfResponsesForSecondPossibilityOfResponse, question.numberOfResponsesForThirdPossibilityOfResponse]"
                     chart-labels="resultsChartsCtrl.labels" chart-colors="resultsChartsCtrl.colors"
                 </canvas>
             </div>

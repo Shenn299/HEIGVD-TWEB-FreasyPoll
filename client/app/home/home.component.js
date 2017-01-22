@@ -4,7 +4,6 @@ const angular = require('angular');
 const uiRouter = require('angular-ui-router');
 
 import routes from './home.routes';
-import currentPollRoomService from '../current-poll-room/current-poll-room.service';
 
 export class HomeComponent {
 
@@ -41,7 +40,7 @@ export class HomeComponent {
 
 }
 
-export default angular.module('heigvdTwebFreasyPollApp.home', [uiRouter, currentPollRoomService])
+export default angular.module('heigvdTwebFreasyPollApp.home', [uiRouter])
   .config(routes)
   .component('home', {
     template: require('./home.html'),

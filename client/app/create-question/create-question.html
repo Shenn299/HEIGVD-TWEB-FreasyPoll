@@ -1,26 +1,38 @@
-<div>This is the create-question view.</div>
+<h2>Enter the question that you want !</h2>
 
 <div class="col-sm-12">
     <form class="form" name="form">
 
         <div class="form-group">
             <input type="text" name="statement" class="form-control" placeholder="Enter the question" ng-model="createQuestionCtrl.question.statement"
-                required size="35">
+                required size="35" required />
+            <span class="text-danger" ng-show="form.statement.$error.required">
+                It must contain at least 1 character
+            </span>
         </div>
 
         <div class="form-group">
             <input type="text" name="firstPossibilityOfResponse" class="form-control" placeholder="Enter the first possibility of response"
-                ng-model="createQuestionCtrl.question.firstPossibilityOfResponse" required size="35">
+                ng-model="createQuestionCtrl.question.firstPossibilityOfResponse" required size="35" required />
+            <span class="text-danger" ng-show="form.firstPossibilityOfResponse.$error.required">
+                It must contain at least 1 character
+            </span>
         </div>
 
         <div class="form-group">
             <input type="text" name="secondPossibilityOfResponse" class="form-control" placeholder="Enter the second possibility of response"
-                ng-model="createQuestionCtrl.question.secondPossibilityOfResponse" required size="35">
+                ng-model="createQuestionCtrl.question.secondPossibilityOfResponse" required size="35" required />
+            <span class="text-danger" ng-show="form.secondPossibilityOfResponse.$error.required">
+                It must contain at least 1 character
+            </span>
         </div>
 
         <div class="form-group">
             <input type="text" name="thirdPossibilityOfResponse" class="form-control" placeholder="Enter the third possibility of response"
-                ng-model="createQuestionCtrl.question.thirdPossibilityOfResponse" required size="35">
+                ng-model="createQuestionCtrl.question.thirdPossibilityOfResponse" required size="35" ng-minlength="1" />
+            <span class="text-danger" ng-show="form.thirdPossibilityOfResponse.$error.required">
+                It must contain at least 1 character
+            </span>
         </div>
 
     </form>
@@ -30,4 +42,5 @@
             Create !
         </button>
     </div>
+
 </div>

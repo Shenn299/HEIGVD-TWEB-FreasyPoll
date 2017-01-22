@@ -1,22 +1,29 @@
-<div>This is the create-poll-room view.</div>
+<h2>Here you can create a new poll room</h2>
 
 <div class="col-sm-12">
     <form class="form" name="form">
 
         <div class="form-group">
             <input type="text" name="name" class="form-control" placeholder="Enter the poll room name" ng-model="createPollRoomCtrl.pollRoom.name"
-                required size="35">
+                required size="35" required />
+
+            <span class="text-danger" ng-show="form.name.$error.required">
+                It must contain at least 1 character
+            </span>
         </div>
 
         <div class="form-group">
-            <input type="password" name="password" class="form-control" placeholder="Enter the poll room password (can be blank)" ng-model="createPollRoomCtrl.pollRoom.password"
-                required size="35">
+            <input type="password" name="password" class="form-control" placeholder="Enter the poll room password" ng-model="createPollRoomCtrl.pollRoom.password"
+                required size="35" required />
+            <span class="text-danger" ng-show="form.password.$error.required">
+                It is optional
+            </span>
         </div>
 
     </form>
 
     <div>
-        <button class="btn btn-inverse" type="submit" ng-click="createPollRoomCtrl.createPollRoom()">
+        <button class="btn btn-inverse" type="submit" ng-click="createPollRoomCtrl.createPollRoom(form.name, form.password)">
             Create !
         </button>
     </div>

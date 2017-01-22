@@ -4,10 +4,13 @@ import routing from './main.routes';
 import pollRoomToJoinService from '../poll-room-to-join/poll-room-to-join.service';
 
 export class MainController {
+
   awesomeThings = [];
   newThing = '';
   pollRooms = [];
   pollRoomName = '';
+  pollRoomPassword = '';
+  incorrectCredentialsErrorMessage = '';
 
   /*@ngInject*/
   constructor($http, $scope, $state, socket, pollRoomToJoin) {
@@ -15,31 +18,6 @@ export class MainController {
     this.$state = $state;
     this.socket = socket;
     this.pollRoomToJoin = pollRoomToJoin;
-
-    $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
-    });
-  }
-
-  $onInit() {
-    this.$http.get('/api/things')
-      .then(response => {
-        this.awesomeThings = response.data;
-        this.socket.syncUpdates('thing', this.awesomeThings);
-      });
-  }
-
-  addThing() {
-    if (this.newThing) {
-      this.$http.post('/api/things', {
-        name: this.newThing
-      });
-      this.newThing = '';
-    }
-  }
-
-  deleteThing(thing) {
-    this.$http.delete(`/api/things/${thing._id}`);
   }
 
   joinPollRoom() {
@@ -48,7 +26,7 @@ export class MainController {
       this.$http.get('/api/poll-rooms').then(response => {
         this.pollRooms = response.data;
         for (var i = 0; i < this.pollRooms.length; ++i) {
-          if (this.pollRooms[i].name == this.pollRoomName) {
+          if (this.pollRooms[i].name == this.pollRoomName && this.pollRooms[i].password == this.pollRoomPassword) {
             // Get the right poll room
             this.pollRoomToJoin.setPollRoomToJoin(this.pollRooms[i]);
             // Change the state of the router
@@ -56,9 +34,14 @@ export class MainController {
             return;
           }
         }
+        this.incorrectCredentialsErrorMessage = "Poll room name or/and password are incorrect !";
       });
     }
+    else {
+      this.incorrectCredentialsErrorMessage = "Poll room name is required !";
+    }
   }
+
 }
 
 export default angular.module('heigvdTwebFreasyPollApp.main', [uiRouter, pollRoomToJoinService])
