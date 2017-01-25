@@ -1,7 +1,9 @@
-<div>
-    <h1>Welcome in the {{ pollRoomCtrl.pollRoom.name }} poll room !</h1>
-
-    <div class="col-md-12">
+<div id="main" class="wrapper style1">
+	<div class="container">
+		<header class="major">
+    <h2>Welcome in the {{ pollRoomCtrl.pollRoom.name }} poll room !</h2>
+		</header>
+		<section id="content">
         <h1>Questions</h1>
 
         <div ng-repeat="question in pollRoomCtrl.pollRoomQuestions">
@@ -26,6 +28,6 @@
 
         </div>
 
-    </div>
-
+		</section>
+	</div>
 </div>

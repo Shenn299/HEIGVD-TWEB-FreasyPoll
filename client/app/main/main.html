@@ -1,32 +1,28 @@
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>Freasypoll</h1>
-    <img src="assets/images/logo-freasypoll.png" width="120">
-  </div>
+<div id="main" class="wrapper style1">
+	<div class="container">
+		<header class="major">
+			<h2>Freasypoll</h2>
+		</header>
+		<section id="content">
+			<form class="form" name="form">
+			  <div class="form-group">
+			    <p></p>
+			    <input type="text" name="pollRoomName" class="form-control" placeholder="Enter the poll room name to join" ng-model="$ctrl.pollRoomName"
+			      required size="35">
+			  </div>
+			  <div class="form-group">
+			    <input type="text" name="pollRoomPassword" class="form-control" placeholder="Enter the poll room password" ng-model="$ctrl.pollRoomPassword"
+			      required size="35">
+			  </div>
+			</form>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <form class="form" name="form">
-          <div class="form-group">
-            <p></p>
-            <input type="text" name="pollRoomName" class="form-control" placeholder="Enter the poll room name to join" ng-model="$ctrl.pollRoomName"
-              required size="35">
-          </div>
-          <div class="form-group">
-            <input type="text" name="pollRoomPassword" class="form-control" placeholder="Enter the poll room password" ng-model="$ctrl.pollRoomPassword"
-              required size="35">
-          </div>
-        </form>
-
-        <div>
-          <button class="btn btn-inverse" type="submit" ng-click="$ctrl.joinPollRoom()">
-            Join poll room
-        </button>
-          <p><font color="white">{{ $ctrl.incorrectCredentialsErrorMessage }}</font></p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</header>
+			<div>
+			  <button class="btn btn-inverse" type="submit" ng-click="$ctrl.joinPollRoom()">
+			    Join poll room
+			</button>
+			  <p><font color="white">{{ $ctrl.incorrectCredentialsErrorMessage }}</font></p>
+			</div>
+		      </div>
+		</section>
+	</div>
+</div>

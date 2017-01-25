@@ -1,7 +1,9 @@
-<div>
-    <h1>Welcome in your {{ administerPollRoomCtrl.pollRoom.name }} poll room !</h1>
-</div>
-
+<div id="main" class="wrapper style1">
+	<div class="container">
+<header class="major">
+    <h2>Welcome in your {{ administerPollRoomCtrl.pollRoom.name }} poll room !</h2>
+</header>
+<section id="content">
 <div class="col-md-12">
     <h1>Questions</h1>
     <table class="table table-striped">
@@ -31,4 +33,7 @@
     <button class="btn btn-inverse" type="submit" ui-sref="results-charts">
             Results / Charts
     </button>
+</div>
+</section>
+</div>
 </div>
