@@ -9,10 +9,10 @@
         <div layout="row" layout-align="center center" style="min-height: 200px">
             <div>
                 <h2>{{question.statement}} </h3> 
-                <h2><font color="red">A</font>:{{ question.firstPossibilityOfResponse }} <br></h2>
-                <h2><font color="green">B</font>:{{ question.secondPossibilityOfResponse }} <br></h2>
-                <h2><font color="blue">C</font>:{{ question.thirdPossibilityOfResponse }} <br></h2>
-                <h2>Already {{ (question.numberOfResponsesForFirstPossibilityOfResponse * 1) + (question.numberOfResponsesForSecondPossibilityOfResponse * 1) + (question.numberOfResponsesForThirdPossibilityOfResponse * 1) }} answers</h2>
+                <h3><font color="red">A</font>: {{ question.firstPossibilityOfResponse }} <br></h3>
+                <h3><font color="green">B</font>: {{ question.secondPossibilityOfResponse }} <br></h3>
+                <h3><font color="blue">C</font>: {{ question.thirdPossibilityOfResponse }} <br></h3>
+                <h3>Already {{ (question.numberOfResponsesForFirstPossibilityOfResponse * 1) + (question.numberOfResponsesForSecondPossibilityOfResponse * 1) + (question.numberOfResponsesForThirdPossibilityOfResponse * 1) }} answers</h3>
 
             </div>
 
