@@ -6,6 +6,9 @@ A presenter can easily create a poll room, then he will add one or some quesions
 
 The presentation page & the web app are available [here](https://shenn299.github.io/HEIGVD-TWEB-FreasyPoll/)
 
+Our presentation is available here : 
+[freasypoll-presentation](freasypoll-presentation.pdf)
+
 ## Contribute
 
 This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack)
